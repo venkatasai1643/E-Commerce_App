@@ -49,6 +49,94 @@
           placeholder="Confirm password">
       </div>
 
+      <div class="role-section">
+
+    <label class="role-title">
+      Register as
+    </label>
+
+    <div class="role-options">
+
+      <!-- Customer -->
+      <label class="role-card">
+
+        <input
+          type="radio"
+          name="role"
+          value="CUSTOMER"
+          [(ngModel)]="selectedRole">
+
+        <div class="role-content">
+
+          <div class="role-icon">
+            🛍️
+          </div>
+
+          <div class="role-details">
+            <h3>Customer</h3>
+            <p>Shop and place orders</p>
+          </div>
+
+        </div>
+
+      </label>
+
+
+      <!-- Seller -->
+      <label class="role-card">
+
+        <input
+          type="radio"
+          name="role"
+          value="SELLER"
+          [(ngModel)]="selectedRole">
+
+        <div class="role-content">
+
+          <div class="role-icon">
+            🏪
+          </div>
+
+          <div class="role-details">
+            <h3>Seller</h3>
+            <p>Sell and manage your products</p>
+          </div>
+
+        </div>
+
+      </label>
+
+
+      <!-- Delivery Partner -->
+      <label class="role-card">
+
+        <input
+          type="radio"
+          name="role"
+          value="DELIVERY_PARTNER"
+          [(ngModel)]="selectedRole">
+
+        <div class="role-content">
+
+          <div class="role-icon">
+            🚚
+          </div>
+
+          <div class="role-details">
+            <h3>Delivery Partner</h3>
+            <p>Deliver orders to customers</p>
+          </div>
+
+        </div>
+
+      </label>
+
+    </div>
+
+  </div>
+
+
+
       <button type="submit">
         Create Account
       </button>
@@ -57,7 +145,7 @@
 
     <p>
       Already have an account?
-      <a routerLink="/login">Login</a>
+      <a routerLink="/auth/login">Login</a>
     </p>
 
   </div>

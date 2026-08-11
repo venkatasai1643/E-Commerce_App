@@ -37,3 +37,100 @@ button {
   margin-top: 10px;
   cursor: pointer;
 }
+
+/* Role Selection */
+
+.role-section {
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+.role-title {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.role-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.role-card {
+  position: relative;
+  display: block;
+  padding: 15px;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.role-card:hover {
+  border-color: #1976d2;
+  background-color: #f7fbff;
+}
+
+/* Hide actual radio button */
+
+.role-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+/* Content inside card */
+
+.role-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Icon */
+
+.role-icon {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+  background-color: #f1f5f9;
+
+  font-size: 22px;
+}
+
+/* Text */
+
+.role-details h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  color: #222;
+}
+
+.role-details p {
+  margin: 0;
+  font-size: 13px;
+  color: #777;
+}
+
+/* Selected role */
+
+.role-card:has(input[type="radio"]:checked) {
+  border: 2px solid #1976d2;
+  background-color: #f0f7ff;
+}
+
+.role-card:has(input[type="radio"]:checked) .role-icon {
+  background-color: #1976d2;
+}
+
+.role-card:has(input[type="radio"]:checked) .role-details h3 {
+  color: #1976d2;
+}
