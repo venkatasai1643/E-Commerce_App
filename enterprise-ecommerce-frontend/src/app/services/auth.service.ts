@@ -16,13 +16,20 @@ export interface RegisterRequest {
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:8081/api';
+  private apiUrl = 'http://localhost:8081';
 
   constructor(private http: HttpClient) {}
 
   register(user: RegisterRequest): Observable<string> {
     return this.http.post<string>(
-      `${this.apiUrl}/save_details`,
+      `${this.apiUrl}/api/save_details`,
+      user
+    );
+  }
+
+  login(user: { email: string; password: string }): Observable<string> {
+    return this.http.post<string>(
+      `${this.apiUrl}/api/login`,
       user
     );
   }

@@ -5,7 +5,7 @@
     <h2>Login</h2>
     <p class="subtitle">Welcome back! Please login to your account.</p>
 
-    <form>
+    <form (ngSubmit)="loginUser()">
 
       <!-- Email -->
       <div class="form-group">
@@ -15,6 +15,7 @@
           type="email"
           id="email"
           name="email"
+          [(ngModel)]="email"
           placeholder="Enter your email"
         />
       </div>
@@ -27,6 +28,7 @@
           type="password"
           id="password"
           name="password"
+          [(ngModel)]="password"
           placeholder="Enter your password"
         />
       </div>

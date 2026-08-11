@@ -15,4 +15,13 @@ public class AuthServiceImpl {
     public void insertUserDetails(User user){
         repository.save(user);
     }
+
+    public String loginUser(User user){
+        User existingUser = repository.findByEmail(user.getEmail()).orElse(null);
+        if (existingUser != null && existingUser.getPassword().equals(user.getPassword())) {
+            return "Login successful";
+        } else {
+            return "Invalid email or password";
+        }
+    }
 }
