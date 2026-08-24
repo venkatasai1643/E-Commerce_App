@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 import com.e_commerce.application.entity.User;
 import com.e_commerce.application.repository.UserRepository;
+import com.e_commerce.application.security.jwtService;
+import com.e_commerce.application.dto.LoginRequest;
+import com.e_commerce.application.dto.LoginResponse;
 
 @Service
 public class AuthServiceImpl {
@@ -15,6 +18,9 @@ public class AuthServiceImpl {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private jwtService jwtService;
 
     public User insertUserDetails(User user){
 
@@ -26,18 +32,22 @@ public class AuthServiceImpl {
         return repository.save(user);
     }
 
-    public String loginUser(User user){
-        User existingUser = repository.findByEmail(user.getEmail()).orElse(null);
+    public LoginResponse loginUser(LoginRequest loginRequest){
+        User existingUser = repository.findByEmail(loginRequest.getEmail()).orElse(null);
         
+        if(existingUser == null)
+            return null;
+
          boolean passwordMatches =
                 passwordEncoder.matches(
-                        user.getPassword(),
+                        loginRequest.getPassword(),
                         existingUser.getPassword()
                 );
-         if (passwordMatches) {
-            return "Login successful";
+         if (!passwordMatches) {
+            return null;
         }
+        String token = jwtService.generateToken(existingUser.getEmail(), existingUser.getRole());
 
-        return "Invalid email or password";
+        return new LoginResponse(token,existingUser.getRole());
     }
 }

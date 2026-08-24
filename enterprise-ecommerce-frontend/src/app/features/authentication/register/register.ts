@@ -12,6 +12,7 @@ import { AuthService } from '../../../services/auth.service';
 export class Register {
 
   selectedRole: string = 'CUSTOMER';
+  showRegistrationForm: boolean = false;
 
   user = {
     firstName: '',
@@ -52,4 +53,11 @@ export class Register {
 
     });
   }
+  continueRegistration() {
+
+  if (this.selectedRole) {
+    this.showRegistrationForm = true;
+  }
+
+}
 }

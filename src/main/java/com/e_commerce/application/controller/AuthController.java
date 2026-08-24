@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import com.e_commerce.application.dto.LoginRequest;
+import com.e_commerce.application.dto.LoginResponse;
 
 import com.e_commerce.application.entity.User;
 import com.e_commerce.application.service.AuthServiceImpl;
@@ -29,8 +31,10 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String loginUser(@RequestBody User user){
-        return authServiceImpl.loginUser(user);
+    public LoginResponse loginUser(@RequestBody LoginRequest loginRequest){
+        return authServiceImpl.loginUser(loginRequest);
     }
+
+    
 
 }
