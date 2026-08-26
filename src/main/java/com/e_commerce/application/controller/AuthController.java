@@ -35,6 +35,9 @@ public class AuthController {
         return authServiceImpl.loginUser(loginRequest);
     }
 
-    
+    @GetMapping("/test")
+public String testApi() {
+    return "JWT authentication is working!";
+}
 
 }

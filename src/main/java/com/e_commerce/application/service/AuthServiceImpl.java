@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.e_commerce.application.entity.User;
 import com.e_commerce.application.repository.UserRepository;
-import com.e_commerce.application.security.jwtService;
+import com.e_commerce.application.security.JwtService;
 import com.e_commerce.application.dto.LoginRequest;
 import com.e_commerce.application.dto.LoginResponse;
 
@@ -20,7 +20,7 @@ public class AuthServiceImpl {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private jwtService jwtService;
+    private JwtService jwtService;
 
     public User insertUserDetails(User user){
 

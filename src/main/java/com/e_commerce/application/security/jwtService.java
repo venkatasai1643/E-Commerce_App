@@ -12,7 +12,7 @@ import java.util.Date;
 
 
 @Service
-public class jwtService{
+public class JwtService{
 
     @Value("${jwt.secret}")
     private String secretKey;
@@ -32,5 +32,34 @@ public class jwtService{
 
     private SecretKey getSigningKey(String secretKey){
         return Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
+    }
+
+    public boolean validateToken(String token){
+        try{
+            Jwts.parser()
+            .setSigningKey(getSigningKey(secretKey))
+            .build()
+            .parseSignedClaims(token);
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+    }
+
+    public String extractEmail(String token){
+        Claims claims = Jwts.parser()
+        .setSigningKey(getSigningKey(secretKey))
+        .build()
+        .parseSignedClaims(token)
+        .getBody();
+        return claims.getSubject();
+    }
+    public String extractRole(String token){
+        Claims claims = Jwts.parser()
+        .setSigningKey(getSigningKey(secretKey))
+        .build()
+        .parseSignedClaims(token)
+        .getBody();
+        return claims.get("role", String.class);
     }
 }
